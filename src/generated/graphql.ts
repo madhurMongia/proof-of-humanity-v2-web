@@ -1399,6 +1399,8 @@ export type Query = {
   challengerFunds: Array<ChallengerFund>;
   challengers: Array<Challenger>;
   challenges: Array<Challenge>;
+  circlesAccount?: Maybe<CirclesAccount>;
+  circlesAccounts: Array<CirclesAccount>;
   claimer?: Maybe<Claimer>;
   claimers: Array<Claimer>;
   contract?: Maybe<Contract>;
@@ -2883,6 +2885,13 @@ export enum _SubgraphErrorPolicy_ {
   /** If the subgraph has indexing errors, data will be omitted. The default. */
   Deny = 'deny'
 }
+
+export type GetCirclesAccountsByaddressQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type GetCirclesAccountsByaddressQuery = { __typename?: 'Query', registrations: Array<{ __typename?: 'Registration', id: any, expirationTime: any, circleAccount?: { __typename?: 'CirclesAccount', id: any, trustExpiryTime: any } | null }>, crossChainRegistrations: Array<{ __typename?: 'CrossChainRegistration', id: any, expirationTime: any, circleAccount?: { __typename?: 'CirclesAccount', id: any, trustExpiryTime: any } | null }> };
 
 export type RequestsToAdvanceQueryVariables = Exact<{ [key: string]: never; }>;
 
