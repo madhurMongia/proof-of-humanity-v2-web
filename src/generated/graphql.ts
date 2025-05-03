@@ -2888,10 +2888,11 @@ export enum _SubgraphErrorPolicy_ {
 
 export type GetCirclesAccountsByaddressQueryVariables = Exact<{
   address: Scalars['String'];
+  expirationTime: Scalars['BigInt'];
 }>;
 
 
-export type GetCirclesAccountsByaddressQuery = { __typename?: 'Query', registrations: Array<{ __typename?: 'Registration', id: any, expirationTime: any, circleAccount?: { __typename?: 'CirclesAccount', id: any, trustExpiryTime: any } | null }>, crossChainRegistrations: Array<{ __typename?: 'CrossChainRegistration', id: any, expirationTime: any, circleAccount?: { __typename?: 'CirclesAccount', id: any, trustExpiryTime: any } | null }> };
+export type GetCirclesAccountsByaddressQuery = { __typename?: 'Query', registrations: Array<{ __typename?: 'Registration', id: any, circleAccount?: { __typename?: 'CirclesAccount', id: any, trustExpiryTime: any } | null }>, crossChainRegistrations: Array<{ __typename?: 'CrossChainRegistration', id: any, circleAccount?: { __typename?: 'CirclesAccount', id: any, trustExpiryTime: any } | null }> };
 
 export type RequestsToAdvanceQueryVariables = Exact<{ [key: string]: never; }>;
 
