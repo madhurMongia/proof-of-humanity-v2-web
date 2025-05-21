@@ -1111,6 +1111,7 @@ export enum Fund_OrderBy {
 
 export type Humanity = {
   __typename?: 'Humanity';
+  circleAccount?: Maybe<CirclesAccount>;
   claimerName?: Maybe<Scalars['String']>;
   id: Scalars['Bytes'];
   inTransfer: Scalars['Boolean'];
@@ -1138,6 +1139,7 @@ export type Humanity_Filter = {
   /** Filter for the block changed event. */
   _change_block?: InputMaybe<BlockChangedFilter>;
   and?: InputMaybe<Array<InputMaybe<Humanity_Filter>>>;
+  circleAccount_?: InputMaybe<CirclesAccount_Filter>;
   claimerName?: InputMaybe<Scalars['String']>;
   claimerName_contains?: InputMaybe<Scalars['String']>;
   claimerName_contains_nocase?: InputMaybe<Scalars['String']>;
@@ -1219,6 +1221,9 @@ export type Humanity_Filter = {
 };
 
 export enum Humanity_OrderBy {
+  CircleAccount = 'circleAccount',
+  CircleAccountId = 'circleAccount__id',
+  CircleAccountTrustExpiryTime = 'circleAccount__trustExpiryTime',
   ClaimerName = 'claimerName',
   Id = 'id',
   InTransfer = 'inTransfer',
@@ -1399,6 +1404,8 @@ export type Query = {
   challengerFunds: Array<ChallengerFund>;
   challengers: Array<Challenger>;
   challenges: Array<Challenge>;
+  circlesAccount?: Maybe<CirclesAccount>;
+  circlesAccounts: Array<CirclesAccount>;
   claimer?: Maybe<Claimer>;
   claimers: Array<Claimer>;
   contract?: Maybe<Contract>;
@@ -2883,6 +2890,21 @@ export enum _SubgraphErrorPolicy_ {
   /** If the subgraph has indexing errors, data will be omitted. The default. */
   Deny = 'deny'
 }
+
+export type GetCirclesAccountsByaddressQueryVariables = Exact<{
+  address: Scalars['String'];
+  expirationTime: Scalars['BigInt'];
+}>;
+
+
+export type GetCirclesAccountsByaddressQuery = { __typename?: 'Query', registrations: Array<{ __typename?: 'Registration', id: any, humanity: { __typename?: 'Humanity', id: any, circleAccount?: { __typename?: 'CirclesAccount', id: any, trustExpiryTime: any } | null } }>, crossChainRegistrations: Array<{ __typename?: 'CrossChainRegistration', id: any }> };
+
+export type GetHumanityWithCircleAccountByIdQueryVariables = Exact<{
+  humanityId: Scalars['ID'];
+}>;
+
+
+export type GetHumanityWithCircleAccountByIdQuery = { __typename?: 'Query', humanity?: { __typename?: 'Humanity', id: any, circleAccount?: { __typename?: 'CirclesAccount', id: any, trustExpiryTime: any } | null } | null };
 
 export type RequestsToAdvanceQueryVariables = Exact<{ [key: string]: never; }>;
 
